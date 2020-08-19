@@ -1,0 +1,45 @@
+[{
+	"name": "Arduino Nano v3",
+	"slug": "arduino-nano",
+	"microcontroller": "ATmega328p"
+},{
+	"name": "Arduino UNO R3",
+	"slug": "arduino-uno",
+	"microcontroller": "ATmega328p"
+},{
+	"name": "Arduino Leonardo",
+	"slug": "arduino-leonardo",
+	"microcontroller": "ATmega32U4"
+},{
+	"name": "Arduino Micro",
+	"slug": "arduino-micro",
+	"microcontroller": "ATmega32U4"
+},{
+	"name": "Arduino MEGA R3",
+	"slug": "arduino-mega",
+	"microcontroller": "ATmega2560"
+},{
+	"name": "DigiSpark ATtiny85",
+	"slug": "digispark-attiny85",
+	"microcontroller": "ATtiny85"
+},{
+	"name": "WeMos D1 Mini",
+	"slug": "wemos-d1-mini",
+	"microcontroller": "ESP8266"
+},{
+	"name": "NodeMCU v3",
+	"slug": "nodemcu-esp8266",
+	"microcontroller": "ESP8266"
+},{
+	"name": "NodeMCU ESP32",
+	"slug": "nodemcu-esp32",
+	"microcontroller": "ESP32"
+},{
+	"name": "Sparkfun Pro Micro",
+	"slug": "sparkfun-pro-micro",
+	"microcontroller": "ATmega32U4"
+},{
+	"name": "Sparkfun Pro Mini",
+	"slug": "sparkfun-pro-mini",
+	"microcontroller": "ATmega328p"
+}]

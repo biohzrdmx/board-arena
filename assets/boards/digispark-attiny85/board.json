@@ -1,0 +1,47 @@
+{
+	"name":"DigiSpark ATtiny85",
+	"microcontroller": "ATtiny85",
+	"brand": "Digistump",
+	"tagline": "The tiny, Arduino enabled, usb dev board!",
+	"details": "The **Digispark** is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller, and a bit less powerful. With a whole host of shields to extend its functionality and the ability to use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when an Arduino is too big or too much.",
+	"voltage": 5,
+	"powerSupply": [5, 12],
+	"currentUsage": {
+		"normal": [18, 36],
+		"deepSleep": 12
+	},
+	"pins": {
+		"digital": 6,
+		"pwm": 3,
+		"analog": 4,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 40
+	},
+	"memory": {
+		"flash": 8192,
+		"sram": 256,
+		"eeprom": 512
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16500
+	},
+	"size": {
+		"length": 19,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

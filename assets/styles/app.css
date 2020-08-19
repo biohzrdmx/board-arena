@@ -1,0 +1,123 @@
+html {
+  overflow-y: scroll;
+  font-size: 15px;
+}
+body {
+  font-family: 'Roboto', Arial, Helvetica;
+  font-size: 15px;
+  color: #222222;
+  background: #FFFFFF;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+section {
+  flex: 1 0 0;
+}
+h2 {
+  margin-bottom: 15px;
+}
+h2 .fa-angle-right {
+  color: #bbbbbb;
+}
+h2 a {
+  text-decoration: none;
+}
+h2 a:hover {
+  text-decoration: none;
+}
+a {
+  color: #FF9800;
+}
+a:hover {
+  color: #cc7a00;
+}
+.app-header {
+  background: #FF9800;
+}
+.app-header a {
+  color: #FFFFFF;
+}
+.app-header a:hover {
+  color: #FFFFFF;
+}
+.link-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.list .item {
+  position: relative;
+  text-align: center;
+  margin-bottom: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.07);
+  transition: all 350ms;
+}
+.list .item .item-image {
+  background: url('../images/grid.png') 0 0 repeat;
+  background-size: cover;
+}
+.list .item .item-image img {
+  transition: all 350ms;
+}
+.list .item .item-details {
+  padding: 15px;
+}
+.list .item .item-details h4 {
+  margin-bottom: 3px;
+}
+.list .item .item-details p {
+  margin-bottom: 0;
+  color: #777777;
+}
+.list .item:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.list .item:hover .item-image img {
+  filter: brightness(1.1);
+}
+.board-details .board-specs span {
+  display: block;
+  color: #777777;
+}
+.board-details .board-specs strong {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.board-details .board-specs h3 {
+  margin-bottom: 15px;
+}
+.board-details .board-specs .fa-check {
+  color: #81C784;
+}
+.board-details .board-specs .fa-times {
+  color: #EF5350;
+}
+.board-details .board-specs .fa-question-circle {
+  font-size: 13px;
+  color: #999999;
+  cursor: help;
+  transition: all 350ms;
+}
+.board-details .board-specs .fa-question-circle:hover {
+  color: #777777;
+}
+.board-details .board-specs .fa-microchip,
+.board-details .board-specs .fa-arrows-alt-h,
+.board-details .board-specs .fa-arrows-alt-v {
+  color: #999999;
+}
+.board-details .board-description p {
+  line-height: 1.75;
+  font-size: 1.15em;
+}
+.board-details .board-image {
+  text-align: center;
+  background: url('../images/grid.png') 0 0 repeat;
+  background-size: cover;
+  margin-bottom: 15px;
+}

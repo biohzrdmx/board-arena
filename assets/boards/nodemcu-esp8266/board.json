@@ -1,0 +1,47 @@
+{
+	"name":"NodeMCU V3",
+	"microcontroller": "ESP8266",
+	"brand": "LoLin",
+	"tagline": "NodeMCU is a low-cost open source IoT platform.",
+	"details": "This is the famous **NodeMCU** which is based on ESP8266 WiFi SoC. This is version 3 and it is based on ESP-12E (An ESP8266 based WiFi module). NodeMCU is also an open-source firmware and development kit that helps you to prototype your IoT(Internet of Things) product within a few LUA script lines, and of course you can always program it with Arduino IDE.",
+	"voltage": 3.3,
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [0.15, 400],
+		"deepSleep": 0.05
+	},
+	"pins": {
+		"digital": 16,
+		"pwm": 16,
+		"analog": 1,
+		"spi": 2,
+		"i2c": 1,
+		"i2s": 2,
+		"uart": 2,
+		"maxCurrent": 12
+	},
+	"memory": {
+		"flash": 4194304,
+		"sram": 65536,
+		"eeprom": 512
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 80000
+	},
+	"size": {
+		"length": 58,
+		"width": 31
+	},
+	"features": {
+		"wifi": true,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"name":"Arduino Micro",
+	"microcontroller": "ATmega32U4",
+	"brand": "Arduino",
+	"tagline": "The Micro comes with a built-in USB which makes the Micro recognizable as a mouse or keyboard.",
+	"details": "The **Micro** is a microcontroller board based on the ATmega32U4, developed in conjunction with Adafruit. It has 20 digital input/output pins (of which 7 can be used as PWM outputs and 12 as analog inputs), a 16 MHz crystal oscillator, a micro USB connection, an ICSP header, and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a micro USB cable to get started. It has a form factor that enables it to be easily placed on a breadboard.",
+	"voltage": 5,
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [45, 80],
+		"deepSleep": 35
+	},
+	"pins": {
+		"digital": 20,
+		"pwm": 7,
+		"analog": 12,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 20
+	},
+	"memory": {
+		"flash": 32768,
+		"sram": 2560,
+		"eeprom": 1024
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16000
+	},
+	"size": {
+		"length": 48,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

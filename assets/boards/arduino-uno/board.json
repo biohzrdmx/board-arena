@@ -1,0 +1,47 @@
+{
+	"name":"Arduino UNO R3",
+	"microcontroller": "ATmega328p",
+	"brand": "Arduino",
+	"tagline": "The Arduino UNO is the best board to get started with electronics and coding.",
+	"details": "**Arduino Uno** is a microcontroller board based on the ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz ceramic resonator (CSTCE16M0V53-R0), a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started.. You can tinker with your Uno without worrying too much about doing something wrong, worst case scenario you can replace the chip for a few dollars and start over again.",
+	"voltage": 5,
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [45, 80],
+		"deepSleep": 35
+	},
+	"pins": {
+		"digital": 14,
+		"pwm": 6,
+		"analog": 6,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 40
+	},
+	"memory": {
+		"flash": 32768,
+		"sram": 2048,
+		"eeprom": 1024
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16000
+	},
+	"size": {
+		"length": 69,
+		"width": 53
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": true,
+		"usbConnector": true
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"name":"NodeMCU ESP32",
+	"microcontroller": "ESP32",
+	"brand": "LoLin",
+	"tagline": "NodeMCU is a low-cost open source IoT platform.",
+	"details": "**NodeMCU** is famous for the ESP8266E module with LUA programming language. Now this is more powerful NodeMCU with ESP32 on it.\n\nESP32 is the big brother of ESP8266. It comes with dual core 32-bit processor, built-in WiFi and Bluetooth, more RAM and Flash memory, more GPIO, more ADC, and many other peripherals :)\n\nNodeMCU ESP32 is an ESP-WROOM-32 module in breadboard friendly form factor, you can develop your project in using this compact microcontroller on breadboard.",
+	"voltage": 3.3,
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [20, 240],
+		"deepSleep": 0.5
+	},
+	"pins": {
+		"digital": 36,
+		"pwm": 36,
+		"analog": 15,
+		"spi": 4,
+		"i2c": 2,
+		"i2s": 2,
+		"uart": 2,
+		"maxCurrent": 20
+	},
+	"memory": {
+		"flash": 4194304,
+		"sram": 532480,
+		"eeprom": false
+	},
+	"cpu": {
+		"cores": 2,
+		"clock": [80000, 160000]
+	},
+	"size": {
+		"length": 48,
+		"width": 26
+	},
+	"features": {
+		"wifi": true,
+		"bluetooth": true,
+		"can": true,
+		"ethernet": true,
+		"hall": true,
+		"touch": true,
+		"temperature": true,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

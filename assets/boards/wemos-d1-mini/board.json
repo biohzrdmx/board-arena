@@ -1,0 +1,47 @@
+{
+	"name":"WeMos D1 Mini",
+	"microcontroller": "ESP8266",
+	"brand": "WeMos",
+	"tagline": "WeMos D1 Mini enable wireless connectivity, simple data traffic and electronic controlling to electronic projects at the same time.",
+	"details": "**WeMos D1 mini** is a mini WiFi board based on ESP8266EX. This board is Arduino IDE compatible, therefore it can be programmed using Arduino or its own Lua compiler. It also supports both serial and OTA programming. This small development board has 4MB Flash memory, based on the specifications of ESP8266EX, has 11 digital IO pins, all IO pins capable of Interrupt / PWM / I2C / 1-wire except D0 pins. It has 1 Analog input (3.3V max) and a Micro USB port to connect with PC for communication and programming.",
+	"voltage": 3.3,
+	"powerSupply": [4, 6],
+	"currentUsage": {
+		"normal": 80,
+		"deepSleep": false
+	},
+	"pins": {
+		"digital": 11,
+		"pwm": 11,
+		"analog": 1,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": null
+	},
+	"memory": {
+		"flash": 4194304,
+		"sram": 98304,
+		"eeprom": false
+	},
+	"cpu": {
+		"cores": 2,
+		"clock": [80000, 160000]
+	},
+	"size": {
+		"length": 34,
+		"width": 26
+	},
+	"features": {
+		"wifi": true,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

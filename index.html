@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Board Arena</title>
+	<!-- OG tags -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://biohzrdmx.github.io/board-arena/">
+	<meta property="og:title" content="Board Arena">
+	<meta property="og:image" content="https://biohzrdmx.github.io/board-arena/assets/images/site-share.png">
+	<meta property="og:description" content="View and compare the most popular microcontroller boards specs">
+	<meta property="og:site_name" content="Board Arena">
+	<meta property="og:locale" content="en_US">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+	<link rel="icon" href="assets/images/favicon-md.png" type="image/png">
+	<!-- Device-specific icons -->
+	<link rel="apple-touch-icon" href="assets/images/favicon-sm.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon-md.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon-lg.png" />
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	<link rel="stylesheet" href="assets/styles/app.css">
+</head>
+<body>
+	<header class="app-header"></header>
+	<section class="app-client"></section>
+	<footer class="app-footer"></footer>
+	<!-- Templates -->
+	<script type="text/template" id="partial-header">
+		<div class="container py-1">
+			<div class="m-1">
+				<h1><a href="#/start"><img src="assets/images/badge_w.svg" width="60" alt="" class="img-fluid"></a></h1>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="partial-footer">
+		<div class="container py-1">
+			<div class="m-3">
+				<div class="text-center">
+					<img src="assets/images/logo.svg" width="160" alt="" class="img-fluid">
+					<div class="text-muted">Copyright &copy; <%= date.getFullYear() %> biohzrdmx. All rights reserved.</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="page-start">
+		<div class="container py-1">
+			<div class="m-3">
+				<h2>Available boards</h2>
+				<form action="" method="post">
+					<div class="form-fields">
+						<div class="form-group">
+							<input type="text" name="search" id="search" class="form-control" placeholder="Search">
+						</div>
+					</div>
+				</form>
+				<div class="list list-boards row">
+					<% _.each(app.boards, function(board) { %>
+						<div class="col-md-4 col-lg-3">
+							<div class="item item-board" data-name="<%= board.name.toLowerCase() %>">
+								<div class="item-image">
+									<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="320" height="320">
+								</div>
+								<div class="item-details">
+									<h4><%= board.name %></h4>
+									<p><%= board.microcontroller %></p>
+								</div>
+								<a href="#/board/<%= board.slug %>" class="link-overlay"></a>
+							</div>
+						</div>
+					<% }) %>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="page-board">
+		<div class="container py-1">
+			<div class="m-3">
+				<h2><a href="#/start">Boards</a> <i class="fa fa-angle-right"></i> <%= board.name %></h2>
+				<div class="board-details">
+					<div class="row">
+						<div class="col-md-5 order-1 order-md-2">
+							<div class="board-image">
+								<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="640" height="640">
+							</div>
+							<div class="board-description"><%= marked(board.details) %></div>
+						</div>
+						<div class="col-md-7 order-2 order-md-1">
+							<div class="board-specs">
+								<h3>General properties</h3>
+								<p><span>Brand</span><strong><%= board.brand %></strong></p>
+								<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
+								<p><span>Dimensions</span><strong><i class="fa fa-fw fa-arrows-alt-h"></i> <%= board.size.length %>mm <i class="fa fa-fw fa-arrows-alt-v"></i> <%= board.size.width %>mm</strong></p>
+								<h3>Power</h3>
+								<p><span>Operating voltage</span><strong><%= app.formatArray(board.voltage, 'v', '/') %></strong></p>
+								<p><span>Power supply</span><strong><%= app.formatArray(board.powerSupply, 'v', '&mdash;') %></strong></p>
+								<p><span>Current usage (normal)</span><strong><%= app.formatArray(board.currentUsage.normal, 'mA', '&mdash;') %></strong></p>
+								<p><span>Current usage (deep sleep)</span><strong><%= app.formatArray(board.currentUsage.deepSleep, 'mA', '&mdash;') %></strong></p>
+								<h3>Input/Output</h3>
+								<p><span>Digital I/O pins</span><strong><%= board.pins.digital %></strong></p>
+								<p><span>Digital I/O pins with PWM</span><strong><%= board.pins.pwm %></strong></p>
+								<p><span>Analog input pins</span><strong><%= board.pins.analog %></strong></p>
+								<p><span>SPI <i class="fa fa-question-circle" title="Serial Peripheral Interface"></i></span><strong><%= board.pins.spi %></strong></p>
+								<p><span>I&sup2;C <i class="fa fa-question-circle" title="Inter-Integrated Circuit"></i></span><strong><%= board.pins.i2c %></strong></p>
+								<p><span>I&sup2;S <i class="fa fa-question-circle" title="Integrated Interchip Sound"></i></span><strong><%= board.pins.i2s %></strong></p>
+								<p><span>UART <i class="fa fa-question-circle" title="Universal Asynchronous Receiver-Transmitter"></i></span><strong><%= board.pins.uart %></strong></p>
+								<p><span>Max. current per pin</span><strong><%= board.pins.maxCurrent %>mA</strong></p>
+								<h3>Memory</h3>
+								<p><span>Flash</span><strong><%= app.formatBytes(board.memory.flash) %></strong></p>
+								<p><span>SRAM</span><strong><%= app.formatBytes(board.memory.sram) %></strong></p>
+								<p><span>EEPROM</span><strong><%= app.formatBytes(board.memory.eeprom) %></strong></p>
+								<h3>Processing</h3>
+								<p><span>Cores</span><strong><%= board.cpu.cores %> <i class="fa fa-microchip"></i></strong></p>
+								<p><span>Clock</span><strong><%= app.formatArray(board.cpu.clock, 'MHz', '/', 0.001) %></strong></p>
+								<h3>Extra features</h3>
+								<p><i class="fa fa-fw <%= board.features.wifi ? 'fa-check' : 'fa-times' %>"></i> WiFi</p>
+								<p><i class="fa fa-fw <%= board.features.bluetooth ? 'fa-check' : 'fa-times' %>"></i> Bluetooth</p>
+								<p><i class="fa fa-fw <%= board.features.can ? 'fa-check' : 'fa-times' %>"></i> CAN bus</p>
+								<p><i class="fa fa-fw <%= board.features.ethernet ? 'fa-check' : 'fa-times' %>"></i> Ethernet</p>
+								<p><i class="fa fa-fw <%= board.features.hall ? 'fa-check' : 'fa-times' %>"></i> Hall-effect sensor</p>
+								<p><i class="fa fa-fw <%= board.features.touch ? 'fa-check' : 'fa-times' %>"></i> Touch sensor</p>
+								<p><i class="fa fa-fw <%= board.features.temperature ? 'fa-check' : 'fa-times' %>"></i> Temperature sensor</p>
+								<p><i class="fa fa-fw <%= board.features.powerJack ? 'fa-check' : 'fa-times' %>"></i> Power jack</p>
+								<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="page-error">
+		<div class="container py-1">
+			<div class="m-3">
+				<h2>Not found</h2>
+			</div>
+		</div>
+	</script>
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.10.2/underscore-min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/class.js"></script>
+	<script type="text/javascript" src="assets/scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+	"name":"Sparkfun Pro Micro",
+	"microcontroller": "ATmega32U4",
+	"brand": "Sparkfun",
+	"tagline": "",
+	"details": "The **Pro Micro** is similar to the Pro Mini except with an ATmega32U4 on board. The USB transceiver inside the 32U4 allows us to add USB connectivity on-board and do away with bulky external USB interface.\n\nThis tiny little board does all of the neat-o Arduino tricks that you're familiar with: 9 channels of 10-bit ADC, 5 PWM pins, 12 DIOs as well as hardware serial connections Rx and Tx. Running at 16MHz and 5V, this board will remind you a lot of your other favorite Arduino-compatible boards but this little guy can go just about anywhere. There is a voltage regulator on board so it can accept voltage up to 12VDC. If you're supplying unregulated power to the board, be sure to connect to the 'RAW' pin on not VCC.",
+	"voltage": [3.3, 5],
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [19, 180],
+		"deepSleep": 0.023
+	},
+	"pins": {
+		"digital": 12,
+		"pwm": 5,
+		"analog": 9,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 40
+	},
+	"memory": {
+		"flash": 32768,
+		"sram": 2048,
+		"eeprom": 1024
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16000
+	},
+	"size": {
+		"length": 33,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": true,
+		"usbConnector": true
+	}
+}

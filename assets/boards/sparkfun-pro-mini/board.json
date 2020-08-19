@@ -1,0 +1,47 @@
+{
+	"name":"Sparkfun Pro Mini",
+	"microcontroller": "ATmega328p",
+	"brand": "Sparkfun",
+	"tagline": "",
+	"details": "It's blue! It's thin! It's the **Arduino Pro Mini**! SparkFun's minimal design approach to Arduino. This is a 5V Arduino running the 16MHz bootloader. Arduino Pro Mini does not come with connectors populated so that you can solder in any connector or wire with any orientation you need. We recommend first time Arduino users start with the Uno R3. It's a great board that will get you up and running quickly. The Arduino Pro series is meant for users that understand the limitations of system voltage (5V), lack of connectors, and USB off board.",
+	"voltage": [3.3, 5],
+	"powerSupply": [5, 12],
+	"currentUsage": {
+		"normal": [19, 180],
+		"deepSleep": 0.023
+	},
+	"pins": {
+		"digital": 14,
+		"pwm": 6,
+		"analog": 8,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 40
+	},
+	"memory": {
+		"flash": 32768,
+		"sram": 2048,
+		"eeprom": 1024
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16000
+	},
+	"size": {
+		"length": 33,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": false
+	}
+}
