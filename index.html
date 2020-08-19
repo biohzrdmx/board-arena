@@ -8,7 +8,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://biohzrdmx.github.io/board-arena/">
 	<meta property="og:title" content="Board Arena">
-	<meta property="og:image" content="https://biohzrdmx.github.io/board-arena/assets/images/site-share.png">
+	<meta property="og:image" content="https://biohzrdmx.github.io/board-arena/assets/images/share.png">
 	<meta property="og:description" content="View and compare the most popular microcontroller boards specs">
 	<meta property="og:site_name" content="Board Arena">
 	<meta property="og:locale" content="en_US">
@@ -54,6 +54,64 @@
 			</div>
 		</div>
 	</script>
+	<script type="text/template" id="partial-slot">
+		<form action="" method="post">
+			<div class="form-fields">
+				<div class="form-group">
+					<select name="board" class="custom-select">
+						<option value="">Select board</option>
+						<% _.each(app.boards, function(board) { %>
+							<option value="<%= board.slug %>" <%= selected == board.slug ? 'selected' : '' %>><%= board.name %></option>
+						<% }) %>
+					</select>
+				</div>
+			</div>
+		</form>
+		<div class="compare"></div>
+	</script>
+	<script type="text/template" id="partial-compare">
+		<div class="compare-image">
+			<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="240" height="240">
+		</div>
+		<div class="compare-details">
+			<h3><%= board.name %></h3>
+			<h4>General properties</h4>
+			<p><span>Brand</span><strong><%= board.brand %></strong></p>
+			<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
+			<p><span>Dimensions</span><strong><i class="fa fa-fw fa-arrows-alt-h"></i> <%= board.size.length %>mm <i class="fa fa-fw fa-arrows-alt-v"></i> <%= board.size.width %>mm</strong></p>
+			<h4>Power</h4>
+			<p><span>Operating voltage</span><strong><%= app.formatArray(board.voltage, 'v', '/') %></strong></p>
+			<p><span>Power supply</span><strong><%= app.formatArray(board.powerSupply, 'v', '&mdash;') %></strong></p>
+			<p><span>Current usage (normal)</span><strong><%= app.formatArray(board.currentUsage.normal, 'mA', '&mdash;') %></strong></p>
+			<p><span>Current usage (deep sleep)</span><strong><%= app.formatArray(board.currentUsage.deepSleep, 'mA', '&mdash;') %></strong></p>
+			<h4>Input/Output</h4>
+			<p><span>Digital I/O pins</span><strong><%= board.pins.digital %></strong></p>
+			<p><span>Digital I/O pins with PWM</span><strong><%= board.pins.pwm %></strong></p>
+			<p><span>Analog input pins</span><strong><%= board.pins.analog %></strong></p>
+			<p><span>SPI</span><strong><%= board.pins.spi %></strong></p>
+			<p><span>I&sup2;C</span><strong><%= board.pins.i2c %></strong></p>
+			<p><span>I&sup2;S</span><strong><%= board.pins.i2s %></strong></p>
+			<p><span>UART</span><strong><%= board.pins.uart %></strong></p>
+			<p><span>Max. current per pin</span><strong><%= app.formatArray(board.pins.maxCurrent, 'mA') %></strong></p>
+			<h4>Memory</h4>
+			<p><span>Flash</span><strong><%= app.formatBytes(board.memory.flash) %></strong></p>
+			<p><span>SRAM</span><strong><%= app.formatBytes(board.memory.sram) %></strong></p>
+			<p><span>EEPROM</span><strong><%= app.formatBytes(board.memory.eeprom) %></strong></p>
+			<h4>Processing</h4>
+			<p><span>Cores</span><strong><%= board.cpu.cores %> <i class="fa fa-microchip"></i></strong></p>
+			<p><span>Clock</span><strong><%= app.formatArray(board.cpu.clock, 'MHz', '/', 0.001) %></strong></p>
+			<h4>Extra features</h4>
+			<p><i class="fa fa-fw <%= board.features.wifi ? 'fa-check' : 'fa-times' %>"></i> WiFi</p>
+			<p><i class="fa fa-fw <%= board.features.bluetooth ? 'fa-check' : 'fa-times' %>"></i> Bluetooth</p>
+			<p><i class="fa fa-fw <%= board.features.can ? 'fa-check' : 'fa-times' %>"></i> CAN bus</p>
+			<p><i class="fa fa-fw <%= board.features.ethernet ? 'fa-check' : 'fa-times' %>"></i> Ethernet</p>
+			<p><i class="fa fa-fw <%= board.features.hall ? 'fa-check' : 'fa-times' %>"></i> Hall-effect sensor</p>
+			<p><i class="fa fa-fw <%= board.features.touch ? 'fa-check' : 'fa-times' %>"></i> Touch sensor</p>
+			<p><i class="fa fa-fw <%= board.features.temperature ? 'fa-check' : 'fa-times' %>"></i> Temperature sensor</p>
+			<p><i class="fa fa-fw <%= board.features.powerJack ? 'fa-check' : 'fa-times' %>"></i> Power jack</p>
+			<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
+		</div>
+	</script>
 	<script type="text/template" id="page-start">
 		<div class="container py-1">
 			<div class="m-3">
@@ -61,7 +119,10 @@
 				<form action="" method="post">
 					<div class="form-fields">
 						<div class="form-group">
-							<input type="text" name="search" id="search" class="form-control" placeholder="Search">
+							<div class="icon-group">
+								<input type="text" name="search" id="search" class="form-control" placeholder="Search" autocomplete="off">
+								<i class="fa fa-search group-icon"></i>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -75,6 +136,7 @@
 								<div class="item-details">
 									<h4><%= board.name %></h4>
 									<p><%= board.microcontroller %></p>
+									<a href="#/compare/<%= board.slug %>" class="btn btn-outline-primary btn-block">Compare</a>
 								</div>
 								<a href="#/board/<%= board.slug %>" class="link-overlay"></a>
 							</div>
@@ -134,6 +196,26 @@
 								<p><i class="fa fa-fw <%= board.features.powerJack ? 'fa-check' : 'fa-times' %>"></i> Power jack</p>
 								<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="page-compare">
+		<div class="container py-1">
+			<div class="m-3">
+				<h2>Compare boards</h2>
+				<div class="comparator">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="comparator-slot slot-1 js-slot"></div>
+						</div>
+						<div class="col-md-4">
+							<div class="comparator-slot slot-2 js-slot"></div>
+						</div>
+						<div class="col-md-4">
+							<div class="comparator-slot slot-3 js-slot"></div>
 						</div>
 					</div>
 				</div>

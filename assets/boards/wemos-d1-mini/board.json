@@ -18,7 +18,7 @@
 		"i2c": 1,
 		"i2s": 1,
 		"uart": 1,
-		"maxCurrent": null
+		"maxCurrent": false
 	},
 	"memory": {
 		"flash": 4194304,

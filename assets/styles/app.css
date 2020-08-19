@@ -32,6 +32,23 @@ a {
 a:hover {
   color: #cc7a00;
 }
+.btn.btn-primary {
+  background-color: #FF9800;
+  border-color: #FF9800;
+}
+.btn.btn-primary:hover {
+  background-color: #e68900;
+  border-color: #e68900;
+}
+.btn.btn-outline-primary {
+  border-color: #FF9800;
+  color: #FF9800;
+}
+.btn.btn-outline-primary:hover {
+  background-color: #FF9800;
+  border-color: #FF9800;
+  color: #FFFFFF;
+}
 .app-header {
   background: #FF9800;
 }
@@ -70,14 +87,30 @@ a:hover {
   margin-bottom: 3px;
 }
 .list .item .item-details p {
-  margin-bottom: 0;
   color: #777777;
+}
+.list .item .item-details a.btn {
+  position: relative;
+  z-index: 50;
 }
 .list .item:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .list .item:hover .item-image img {
   filter: brightness(1.1);
+}
+.form-group .icon-group {
+  position: relative;
+}
+.form-group .icon-group .form-control {
+  padding-left: 32px;
+}
+.form-group .icon-group .group-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  margin-top: -7px;
+  color: #bbbbbb;
 }
 .board-details .board-specs span {
   display: block;
@@ -120,4 +153,73 @@ a:hover {
   background: url('../images/grid.png') 0 0 repeat;
   background-size: cover;
   margin-bottom: 15px;
+}
+.comparator .compare {
+  background: #fcfcfc;
+  padding: 1px 0;
+}
+.comparator .compare .compare-image {
+  text-align: center;
+  background: url('../images/grid.png') 0 0 repeat;
+  background-size: cover;
+  margin-bottom: 15px;
+}
+.comparator .compare .compare-details {
+  position: relative;
+  text-align: center;
+}
+.comparator .compare .compare-details::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -25px;
+  margin-left: -8px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8px 10px 8px;
+  border-color: transparent transparent #fcfcfc transparent;
+}
+.comparator .compare .compare-details span {
+  display: block;
+  color: #777777;
+}
+.comparator .compare .compare-details strong {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.comparator .compare .compare-details h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0 12px;
+  margin-bottom: 15px;
+}
+.comparator .compare .compare-details h4 {
+  margin-bottom: 15px;
+  font-size: 0.95em;
+  padding: 7px;
+  background: #f1f1f1;
+  color: #777777;
+}
+.comparator .compare .compare-details .fa-check {
+  color: #81C784;
+}
+.comparator .compare .compare-details .fa-times {
+  color: #EF5350;
+}
+.comparator .compare .compare-details .fa-question-circle {
+  font-size: 13px;
+  color: #999999;
+  cursor: help;
+  transition: all 350ms;
+}
+.comparator .compare .compare-details .fa-question-circle:hover {
+  color: #777777;
+}
+.comparator .compare .compare-details .fa-microchip,
+.comparator .compare .compare-details .fa-arrows-alt-h,
+.comparator .compare .compare-details .fa-arrows-alt-v {
+  color: #999999;
 }

@@ -23,9 +23,12 @@ App = Class.extend({
 		//
 		obj.templates._header = obj.compileTemplate('#partial-header');
 		obj.templates._footer = obj.compileTemplate('#partial-footer');
+		obj.templates._slot = obj.compileTemplate('#partial-slot');
+		obj.templates._compare = obj.compileTemplate('#partial-compare');
 		obj.templates.pageError = obj.compileTemplate('#page-error');
 		obj.templates.pageStart = obj.compileTemplate('#page-start');
 		obj.templates.pageBoard = obj.compileTemplate('#page-board');
+		obj.templates.pageCompare = obj.compileTemplate('#page-compare');
 		//
 		obj.addRoute('error', '/error', function(params) {
 			obj.renderTemplate(obj.containers.client, 'pageError', params);
@@ -69,7 +72,6 @@ App = Class.extend({
 					obj.renderTemplate(obj.containers.client, 'pageBoard', { board: data });
 					//
 					$('html, body').scrollTop(0);
-					console.log(data);
 					//
 					app.metaTags["og:title"].setContent(data.name);
 					app.metaTags["og:image"].setContent(app.metaTags["og:url"].getOriginal() + 'assets/boards/' + data.slug + '/board.svg');
@@ -79,6 +81,37 @@ App = Class.extend({
 					document.title = app.metaTags["og:title"].getContent();
 				}
 			});
+			return true;
+		});
+		obj.addRoute('compare', '/compare/:boards', function(params) {
+			obj.renderTemplate(obj.containers.client, 'pageCompare', params);
+			//
+			var boards = params[1].split('|') || [];
+			//
+			$('.js-slot').each(function(index) {
+				var slot = $(this),
+					selected = boards[index] || '';
+				selected = selected == 'none' ? '' : selected;
+				obj.renderTemplate(slot, '_slot', { selected: selected });
+				if (selected.length) {
+					obj.loadComparatorItem(slot, selected);
+				}
+				slot.on('change', '[name=board]', function() {
+					var select = $(this),
+						other = [];
+					$('.js-slot').each(function(index) {
+						other.push( $(this).find('[name=board]').val() || 'none' );
+					});
+					obj.navigateTo( '/compare/' + other.join('|') );
+				});
+			});
+			//
+			app.metaTags["og:title"].setContent('Compare boards');
+			app.metaTags["og:image"].restore();
+			app.metaTags["og:description"].restore();
+			app.metaTags["og:url"].restore();
+			//
+			document.title = app.metaTags["og:title"].getContent();
 			return true;
 		});
 		//
@@ -106,7 +139,9 @@ App = Class.extend({
 				//
 			},
 			success: function(data) {
-				obj.boards = data;
+				obj.boards = _.sortBy(data, function(board) {
+					return board.name;
+				});
 				//
 				obj.renderTemplate(obj.containers.header, '_header');
 				obj.renderTemplate(obj.containers.footer, '_footer', { date: new Date });
@@ -164,6 +199,19 @@ App = Class.extend({
 			opts.error();
 		}).always(function() {
 			opts.complete();
+		});
+	},
+	loadComparatorItem: function(slot, slug) {
+		var obj = this;
+		obj.loadData({
+			src: 'assets/boards/'+ slug +'/board.json',
+			progress: function(percent) {
+				//
+			},
+			success: function(data) {
+				data.slug = slug;
+				obj.renderTemplate(slot.find('.compare'), '_compare', { board: data });
+			}
 		});
 	},
 	compileTemplate: function(selector) {
