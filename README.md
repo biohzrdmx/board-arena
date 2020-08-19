@@ -1,6 +1,6 @@
 # board-arena
 
-View and compare the most popular microcontroller boards specs
+View and compare the most popular microcontroller board specs
 
 https://biohzrdmx.github.io/board-arena/
 
