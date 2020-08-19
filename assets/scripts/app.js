@@ -25,6 +25,7 @@ App = Class.extend({
 		obj.templates._footer = obj.compileTemplate('#partial-footer');
 		obj.templates._slot = obj.compileTemplate('#partial-slot');
 		obj.templates._compare = obj.compileTemplate('#partial-compare');
+		obj.templates._placeholder = obj.compileTemplate('#partial-placeholder');
 		obj.templates.pageError = obj.compileTemplate('#page-error');
 		obj.templates.pageStart = obj.compileTemplate('#page-start');
 		obj.templates.pageBoard = obj.compileTemplate('#page-board');
@@ -39,13 +40,23 @@ App = Class.extend({
 			//
 			$('[name=search]').on('keyup', function(e) {
 				var el = $(this),
-					val = el.val();
+					val = el.val(),
+					found = 0;
 				if ( val.length ) {
 					$('.list-boards .item').parent().addClass('d-none')
 					$('.list-boards .item').filter('[data-name*="'+ val +'"]').parent().removeClass('d-none');
+					found = $('.list-boards .item').filter('[data-name*="'+ val +'"]').length;
+					if (found == 0) {
+						$('.placeholder').removeClass('d-none');
+					} else {
+						$('.placeholder').addClass('d-none');
+					}
 				} else {
 					$('.list-boards .item').parent().removeClass('d-none');
+					$('.placeholder').addClass('d-none');
 				}
+			}).on('focus', function() {
+				$(this).select();
 			}).closest('form').on('submit', function() {
 				return false;
 			});
@@ -83,10 +94,11 @@ App = Class.extend({
 			});
 			return true;
 		});
-		obj.addRoute('compare', '/compare/:boards', function(params) {
-			obj.renderTemplate(obj.containers.client, 'pageCompare', params);
+		obj.addRoute('compare', '/compare*boards', function(params) {
+			var boards = params[1].replace(/^\/+/ig, '').split('|') || [],
+				isEmpty = true;
 			//
-			var boards = params[1].split('|') || [];
+			obj.renderTemplate(obj.containers.client, 'pageCompare', { boards: boards });
 			//
 			$('.js-slot').each(function(index) {
 				var slot = $(this),
@@ -95,16 +107,29 @@ App = Class.extend({
 				obj.renderTemplate(slot, '_slot', { selected: selected });
 				if (selected.length) {
 					obj.loadComparatorItem(slot, selected);
+					isEmpty = false;
 				}
 				slot.on('change', '[name=board]', function() {
 					var select = $(this),
-						other = [];
+						other = [],
+						selected = '';
 					$('.js-slot').each(function(index) {
 						other.push( $(this).find('[name=board]').val() || 'none' );
 					});
-					obj.navigateTo( '/compare/' + other.join('|') );
+					selected = other.join('|');
+					selected = selected == 'none|none|none' ? '' : '/' + selected;
+					obj.navigateTo( '/compare' + selected );
 				});
 			});
+			//
+			if (isEmpty) {
+				obj.renderTemplate($('.placeholder'), '_placeholder');
+				$('.placeholder .animable').velocity({ opacity: [1, 0], translateY: [0, 15] }, {
+					duration: 600,
+					easing: [500, 25],
+					delay: 300
+				});
+			}
 			//
 			app.metaTags["og:title"].setContent('Compare boards');
 			app.metaTags["og:image"].restore();
@@ -145,6 +170,10 @@ App = Class.extend({
 				//
 				obj.renderTemplate(obj.containers.header, '_header');
 				obj.renderTemplate(obj.containers.footer, '_footer', { date: new Date });
+				//
+				$('.js-toggle-menu').on('click', function(e) {
+					e.preventDefault();
+				});
 				//
 				$(window).trigger('hashchange');
 			}

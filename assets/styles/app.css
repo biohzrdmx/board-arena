@@ -49,7 +49,15 @@ a:hover {
   border-color: #FF9800;
   color: #FFFFFF;
 }
+.animable {
+  opacity: 0;
+}
 .app-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
   background: #FF9800;
 }
 .app-header a {
@@ -57,6 +65,74 @@ a:hover {
 }
 .app-header a:hover {
   color: #FFFFFF;
+}
+.app-header .app-menu {
+  margin-top: 5px;
+}
+.app-header .app-menu > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+.app-header .app-menu > ul > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.app-header .app-menu > ul > li > a {
+  display: block;
+  font-size: 28px;
+  padding: 7px 15px;
+}
+.app-header .app-menu > ul > li > ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background: #ffa624;
+  right: 0;
+}
+.app-header .app-menu > ul > li > ul > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.app-header .app-menu > ul > li > ul > li > a {
+  display: block;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 7px 15px;
+}
+.app-header .app-menu > ul > li > ul > li > a:hover {
+  background: #ffb13d;
+}
+.app-header .app-menu > ul > li:hover {
+  background: #ffa624;
+}
+.app-header .app-menu > ul > li:hover > ul {
+  display: block;
+}
+.app-footer p {
+  margin-bottom: 0;
+}
+.app-footer p:not(:last-child) {
+  margin-bottom: 5px;
+}
+.app-footer .link-github {
+  color: #626262;
+}
+.app-footer .link-github:hover {
+  color: #2f2f2f;
+  text-decoration: none;
+}
+.app-client {
+  padding-top: 80px;
 }
 .link-overlay {
   position: absolute;
@@ -89,10 +165,6 @@ a:hover {
 .list .item .item-details p {
   color: #777777;
 }
-.list .item .item-details a.btn {
-  position: relative;
-  z-index: 50;
-}
 .list .item:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -111,6 +183,22 @@ a:hover {
   left: 10px;
   margin-top: -7px;
   color: #bbbbbb;
+}
+.placeholder {
+  text-align: center;
+}
+.placeholder p {
+  color: #848484;
+  border: 1px dashed #d0d0d0;
+  background: #fcfcfc;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 1.15em;
+  min-width: 50%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 .board-details .board-specs span {
   display: block;
@@ -146,7 +234,7 @@ a:hover {
 }
 .board-details .board-description p {
   line-height: 1.75;
-  font-size: 1.15em;
+  font-size: 1.25em;
 }
 .board-details .board-image {
   text-align: center;
@@ -165,20 +253,7 @@ a:hover {
   margin-bottom: 15px;
 }
 .comparator .compare .compare-details {
-  position: relative;
   text-align: center;
-}
-.comparator .compare .compare-details::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -25px;
-  margin-left: -8px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 8px 10px 8px;
-  border-color: transparent transparent #fcfcfc transparent;
 }
 .comparator .compare .compare-details span {
   display: block;

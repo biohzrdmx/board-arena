@@ -40,7 +40,25 @@
 	<script type="text/template" id="partial-header">
 		<div class="container py-1">
 			<div class="m-1">
-				<h1><a href="#/start"><img src="assets/images/badge_w.svg" width="60" alt="" class="img-fluid"></a></h1>
+				<div class="row">
+					<div class="col-6">
+						<h1><a href="#/start"><img src="assets/images/badge_w.svg" width="60" alt="" class="img-fluid"></a></h1>
+					</div>
+					<div class="col-6">
+						<nav class="app-menu">
+							<ul>
+								<li>
+									<a href="#" class="js-toggle-menu"><i class="fa fa-bars"></i></a>
+									<ul>
+										<li><a href="#/start">All boards</a></li>
+										<li><a href="#/compare">Comparator</a></li>
+										<li><a href="https://github.com/biohzrdmx/board-arena">View on GitHub</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
 	</script>
@@ -48,8 +66,10 @@
 		<div class="container py-1">
 			<div class="m-3">
 				<div class="text-center">
-					<img src="assets/images/logo.svg" width="160" alt="" class="img-fluid">
-					<div class="text-muted">Copyright &copy; <%= date.getFullYear() %> biohzrdmx. All rights reserved.</div>
+					<p><img src="assets/images/logo.svg" width="160" alt="" class="img-fluid"></p>
+					<p class="text-muted">All product names logos and brands are property of their respective owners.</p>
+					<p class="text-muted">Copyright &copy; <%= date.getFullYear() %> biohzrdmx. All rights reserved.</p>
+					<p class="text-muted"><a href="https://github.com/biohzrdmx/board-arena" class="link-github"><i class="fab fa-github"></i> View project on GitHub</a></p>
 				</div>
 			</div>
 		</div>
@@ -75,6 +95,7 @@
 		</div>
 		<div class="compare-details">
 			<h3><%= board.name %></h3>
+			<p><a href="#/board/<%= board.slug %>">View specifications</a></p>
 			<h4>General properties</h4>
 			<p><span>Brand</span><strong><%= board.brand %></strong></p>
 			<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
@@ -112,6 +133,9 @@
 			<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
 		</div>
 	</script>
+	<script type="text/template" id="partial-placeholder">
+		<p class="animable"><i class="far fa-fw fa-hand-point-up"></i> Pick some boards to get started</p>
+	</script>
 	<script type="text/template" id="page-start">
 		<div class="container py-1">
 			<div class="m-3">
@@ -136,12 +160,15 @@
 								<div class="item-details">
 									<h4><%= board.name %></h4>
 									<p><%= board.microcontroller %></p>
+									<a href="#/board/<%= board.slug %>" class="btn btn-primary btn-block">Specifications</a>
 									<a href="#/compare/<%= board.slug %>" class="btn btn-outline-primary btn-block">Compare</a>
 								</div>
-								<a href="#/board/<%= board.slug %>" class="link-overlay"></a>
 							</div>
 						</div>
 					<% }) %>
+				</div>
+				<div class="placeholder d-none">
+					<p><i class="fa fa-fw fa-search"></i> There are no boards that match your criteria</p>
 				</div>
 			</div>
 		</div>
@@ -152,14 +179,22 @@
 				<h2><a href="#/start">Boards</a> <i class="fa fa-angle-right"></i> <%= board.name %></h2>
 				<div class="board-details">
 					<div class="row">
-						<div class="col-md-5 order-1 order-md-2">
+						<div class="col-md-5">
 							<div class="board-image">
 								<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="640" height="640">
 							</div>
-							<div class="board-description"><%= marked(board.details) %></div>
 						</div>
-						<div class="col-md-7 order-2 order-md-1">
-							<div class="board-specs">
+						<div class="col-md-7">
+							<div class="board-description"><%= marked(board.details) %></div>
+							<p>
+								<a href="#/compare/<%= board.slug %>" class="btn btn-primary"><i class="fa fa-fw fa-clone"></i> Compare</a>
+							</p>
+						</div>
+					</div>
+					<div class="board-specs">
+						<h2>Specifications</h2>
+						<div class="row">
+							<div class="col-md-3">
 								<h3>General properties</h3>
 								<p><span>Brand</span><strong><%= board.brand %></strong></p>
 								<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
@@ -169,6 +204,8 @@
 								<p><span>Power supply</span><strong><%= app.formatArray(board.powerSupply, 'v', '&mdash;') %></strong></p>
 								<p><span>Current usage (normal)</span><strong><%= app.formatArray(board.currentUsage.normal, 'mA', '&mdash;') %></strong></p>
 								<p><span>Current usage (deep sleep)</span><strong><%= app.formatArray(board.currentUsage.deepSleep, 'mA', '&mdash;') %></strong></p>
+							</div>
+							<div class="col-md-3">
 								<h3>Input/Output</h3>
 								<p><span>Digital I/O pins</span><strong><%= board.pins.digital %></strong></p>
 								<p><span>Digital I/O pins with PWM</span><strong><%= board.pins.pwm %></strong></p>
@@ -178,6 +215,8 @@
 								<p><span>I&sup2;S <i class="fa fa-question-circle" title="Integrated Interchip Sound"></i></span><strong><%= board.pins.i2s %></strong></p>
 								<p><span>UART <i class="fa fa-question-circle" title="Universal Asynchronous Receiver-Transmitter"></i></span><strong><%= board.pins.uart %></strong></p>
 								<p><span>Max. current per pin</span><strong><%= board.pins.maxCurrent %>mA</strong></p>
+							</div>
+							<div class="col-md-3">
 								<h3>Memory</h3>
 								<p><span>Flash</span><strong><%= app.formatBytes(board.memory.flash) %></strong></p>
 								<p><span>SRAM</span><strong><%= app.formatBytes(board.memory.sram) %></strong></p>
@@ -185,6 +224,8 @@
 								<h3>Processing</h3>
 								<p><span>Cores</span><strong><%= board.cpu.cores %> <i class="fa fa-microchip"></i></strong></p>
 								<p><span>Clock</span><strong><%= app.formatArray(board.cpu.clock, 'MHz', '/', 0.001) %></strong></p>
+							</div>
+							<div class="col-md-3">
 								<h3>Extra features</h3>
 								<p><i class="fa fa-fw <%= board.features.wifi ? 'fa-check' : 'fa-times' %>"></i> WiFi</p>
 								<p><i class="fa fa-fw <%= board.features.bluetooth ? 'fa-check' : 'fa-times' %>"></i> Bluetooth</p>
@@ -218,6 +259,7 @@
 							<div class="comparator-slot slot-3 js-slot"></div>
 						</div>
 					</div>
+					<div class="placeholder"></div>
 				</div>
 			</div>
 		</div>
@@ -233,6 +275,8 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.10.2/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.min.js"></script>
 	<script type="text/javascript" src="assets/scripts/class.js"></script>
 	<script type="text/javascript" src="assets/scripts/app.js"></script>
 </body>
