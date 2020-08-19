@@ -63,6 +63,14 @@ App = Class.extend({
 			//
 			$('html, body').scrollTop(0);
 			//
+			$('.js-view-boards').on('click', function(e) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop: $('.block-boards').offset().top - 80
+				}, 350);
+				$('[name=search]').select();
+			});
+			//
 			app.metaTags["og:title"].restore();
 			app.metaTags["og:image"].restore();
 			app.metaTags["og:description"].restore();
@@ -134,7 +142,7 @@ App = Class.extend({
 			app.metaTags["og:title"].setContent('Compare boards');
 			app.metaTags["og:image"].restore();
 			app.metaTags["og:description"].restore();
-			app.metaTags["og:url"].restore();
+			app.metaTags["og:url"].setContent(app.metaTags["og:url"].getOriginal() + '#' + params[0]);
 			//
 			document.title = app.metaTags["og:title"].getContent();
 			return true;

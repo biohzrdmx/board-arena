@@ -40,6 +40,10 @@ a:hover {
   background-color: #e68900;
   border-color: #e68900;
 }
+.btn.btn-primary:active:not(:disabled) {
+  background-color: #cc7a00;
+  border-color: #cc7a00;
+}
 .btn.btn-outline-primary {
   border-color: #FF9800;
   color: #FF9800;
@@ -48,6 +52,10 @@ a:hover {
   background-color: #FF9800;
   border-color: #FF9800;
   color: #FFFFFF;
+}
+.btn.btn-outline-primary:active:not(:disabled) {
+  background-color: #cc7a00;
+  border-color: #cc7a00;
 }
 .animable {
   opacity: 0;
@@ -60,6 +68,9 @@ a:hover {
   z-index: 100;
   background: #FF9800;
 }
+.app-header h1 {
+  margin-bottom: 0;
+}
 .app-header a {
   color: #FFFFFF;
 }
@@ -67,7 +78,7 @@ a:hover {
   color: #FFFFFF;
 }
 .app-header .app-menu {
-  margin-top: 5px;
+  margin-top: 2px;
 }
 .app-header .app-menu > ul {
   list-style: none;
@@ -146,7 +157,9 @@ a:hover {
   position: relative;
   text-align: center;
   margin-bottom: 15px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.07);
+  background: #FFFFFF;
+  overflow: hidden;
+  border-radius: 5px;
   transition: all 350ms;
 }
 .list .item .item-image {
@@ -164,9 +177,6 @@ a:hover {
 }
 .list .item .item-details p {
   color: #777777;
-}
-.list .item:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .list .item:hover .item-image img {
   filter: brightness(1.1);
@@ -297,4 +307,28 @@ a:hover {
 .comparator .compare .compare-details .fa-arrows-alt-h,
 .comparator .compare .compare-details .fa-arrows-alt-v {
   color: #999999;
+}
+.block-splash {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block-splash p {
+  font-size: 1.5em;
+  color: #424242;
+}
+.block-boards {
+  background: #FAFAFA;
+  padding: 45px 0;
+}
+.block-boards .form-fields {
+  margin-bottom: 30px;
+}
+.block-specs {
+  background: #FAFAFA;
+  padding: 45px 0;
+}
+.block-specs h2 {
+  margin-bottom: 30px;
 }

@@ -137,106 +137,129 @@
 		<p class="animable"><i class="far fa-fw fa-hand-point-up"></i> Pick some boards to get started</p>
 	</script>
 	<script type="text/template" id="page-start">
-		<div class="container py-1">
-			<div class="m-3">
-				<h2>Available boards</h2>
-				<form action="" method="post">
-					<div class="form-fields">
-						<div class="form-group">
-							<div class="icon-group">
-								<input type="text" name="search" id="search" class="form-control" placeholder="Search" autocomplete="off">
-								<i class="fa fa-search group-icon"></i>
-							</div>
-						</div>
+		<div class="block block-splash">
+			<div class="container">
+				<div class="m-3">
+					<div class="text-center">
+						<img src="assets/images/logo.svg" alt="" width="480" class="img-fluid">
+						<p>View and compare the most popular microcontroller board specs </p>
+						<p><a href="#" class="btn btn-primary btn-lg js-view-boards">View all boards</a></p>
 					</div>
-				</form>
-				<div class="list list-boards row">
-					<% _.each(app.boards, function(board) { %>
-						<div class="col-md-4 col-lg-3">
-							<div class="item item-board" data-name="<%= board.name.toLowerCase() %>">
-								<div class="item-image">
-									<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="320" height="320">
-								</div>
-								<div class="item-details">
-									<h4><%= board.name %></h4>
-									<p><%= board.microcontroller %></p>
-									<a href="#/board/<%= board.slug %>" class="btn btn-primary btn-block">Specifications</a>
-									<a href="#/compare/<%= board.slug %>" class="btn btn-outline-primary btn-block">Compare</a>
+				</div>
+			</div>
+		</div>
+		<div class="block block-boards">
+			<div class="container py-1">
+				<div class="m-3">
+					<h2>Available boards</h2>
+					<form action="" method="post">
+						<div class="form-fields">
+							<div class="form-group">
+								<div class="icon-group">
+									<input type="text" name="search" id="search" class="form-control" placeholder="Search" autocomplete="off">
+									<i class="fa fa-search group-icon"></i>
 								</div>
 							</div>
 						</div>
-					<% }) %>
-				</div>
-				<div class="placeholder d-none">
-					<p><i class="fa fa-fw fa-search"></i> There are no boards that match your criteria</p>
+					</form>
+					<div class="list list-boards row">
+						<% _.each(app.boards, function(board) { %>
+							<div class="col-md-4 col-lg-3">
+								<div class="item item-board" data-name="<%= board.name.toLowerCase() %>">
+									<div class="item-image">
+										<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="320" height="320">
+									</div>
+									<div class="item-details">
+										<h4><%= board.name %></h4>
+										<p><%= board.microcontroller %></p>
+										<a href="#/board/<%= board.slug %>" class="btn btn-primary btn-block">Specifications</a>
+										<a href="#/compare/<%= board.slug %>" class="btn btn-outline-primary btn-block">Compare</a>
+									</div>
+								</div>
+							</div>
+						<% }) %>
+					</div>
+					<div class="placeholder d-none">
+						<p><i class="fa fa-fw fa-search"></i> There are no boards that match your criteria</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</script>
 	<script type="text/template" id="page-board">
-		<div class="container py-1">
-			<div class="m-3">
-				<h2><a href="#/start">Boards</a> <i class="fa fa-angle-right"></i> <%= board.name %></h2>
-				<div class="board-details">
-					<div class="row">
-						<div class="col-md-5">
-							<div class="board-image">
-								<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="640" height="640">
+		<div class="block-board">
+			<div class="container py-1">
+				<div class="m-3">
+					<h2><a href="#/start">Boards</a> <i class="fa fa-angle-right"></i> <%= board.name %></h2>
+					<div class="board-details">
+						<div class="row">
+							<div class="col-md-5">
+								<div class="board-image">
+									<img src="assets/boards/<%= board.slug %>/board.svg" alt="" class="img-fluid" width="640" height="640">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-7">
-							<div class="board-description"><%= marked(board.details) %></div>
-							<p>
-								<a href="#/start" class="btn btn-outline-primary"><i class="fa fa-fw fa-angle-left"></i> Back to list</a>
-								<a href="#/compare/<%= board.slug %>" class="btn btn-primary"><i class="fa fa-fw fa-clone"></i> Compare board</a>
-							</p>
+							<div class="col-md-7">
+								<div class="board-description"><%= marked(board.details) %></div>
+								<p>
+									<a href="#/start" class="btn btn-outline-primary"><i class="fa fa-fw fa-angle-left"></i> Back to list</a>
+									<a href="#/compare/<%= board.slug %>" class="btn btn-primary"><i class="fa fa-fw fa-clone"></i> Compare board</a>
+								</p>
+							</div>
 						</div>
 					</div>
-					<div class="board-specs">
-						<h2>Specifications</h2>
-						<div class="row">
-							<div class="col-md-3">
-								<h3>General properties</h3>
-								<p><span>Brand</span><strong><%= board.brand %></strong></p>
-								<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
-								<p><span>Dimensions</span><strong><i class="fa fa-fw fa-arrows-alt-h"></i> <%= board.size.length %>mm <i class="fa fa-fw fa-arrows-alt-v"></i> <%= board.size.width %>mm</strong></p>
-								<h3>Power</h3>
-								<p><span>Operating voltage</span><strong><%= app.formatArray(board.voltage, 'v', '/') %></strong></p>
-								<p><span>Power supply</span><strong><%= app.formatArray(board.powerSupply, 'v', '&mdash;') %></strong></p>
-								<p><span>Current usage (normal)</span><strong><%= app.formatArray(board.currentUsage.normal, 'mA', '&mdash;') %></strong></p>
-								<p><span>Current usage (deep sleep)</span><strong><%= app.formatArray(board.currentUsage.deepSleep, 'mA', '&mdash;') %></strong></p>
-							</div>
-							<div class="col-md-3">
-								<h3>Input/Output</h3>
-								<p><span>Digital I/O pins</span><strong><%= board.pins.digital %></strong></p>
-								<p><span>Digital I/O pins with PWM</span><strong><%= board.pins.pwm %></strong></p>
-								<p><span>Analog input pins</span><strong><%= board.pins.analog %></strong></p>
-								<p><span>SPI <i class="fa fa-question-circle" title="Serial Peripheral Interface"></i></span><strong><%= board.pins.spi %></strong></p>
-								<p><span>I&sup2;C <i class="fa fa-question-circle" title="Inter-Integrated Circuit"></i></span><strong><%= board.pins.i2c %></strong></p>
-								<p><span>I&sup2;S <i class="fa fa-question-circle" title="Integrated Interchip Sound"></i></span><strong><%= board.pins.i2s %></strong></p>
-								<p><span>UART <i class="fa fa-question-circle" title="Universal Asynchronous Receiver-Transmitter"></i></span><strong><%= board.pins.uart %></strong></p>
-								<p><span>Max. current per pin</span><strong><%= board.pins.maxCurrent %>mA</strong></p>
-							</div>
-							<div class="col-md-3">
-								<h3>Memory</h3>
-								<p><span>Flash</span><strong><%= app.formatBytes(board.memory.flash) %></strong></p>
-								<p><span>SRAM</span><strong><%= app.formatBytes(board.memory.sram) %></strong></p>
-								<p><span>EEPROM</span><strong><%= app.formatBytes(board.memory.eeprom) %></strong></p>
-								<h3>Processing</h3>
-								<p><span>Cores</span><strong><%= board.cpu.cores %> <i class="fa fa-microchip"></i></strong></p>
-								<p><span>Clock</span><strong><%= app.formatArray(board.cpu.clock, 'MHz', '/', 0.001) %></strong></p>
-							</div>
-							<div class="col-md-3">
-								<h3>Extra features</h3>
-								<p><i class="fa fa-fw <%= board.features.wifi ? 'fa-check' : 'fa-times' %>"></i> WiFi</p>
-								<p><i class="fa fa-fw <%= board.features.bluetooth ? 'fa-check' : 'fa-times' %>"></i> Bluetooth</p>
-								<p><i class="fa fa-fw <%= board.features.can ? 'fa-check' : 'fa-times' %>"></i> CAN bus</p>
-								<p><i class="fa fa-fw <%= board.features.ethernet ? 'fa-check' : 'fa-times' %>"></i> Ethernet</p>
-								<p><i class="fa fa-fw <%= board.features.hall ? 'fa-check' : 'fa-times' %>"></i> Hall-effect sensor</p>
-								<p><i class="fa fa-fw <%= board.features.touch ? 'fa-check' : 'fa-times' %>"></i> Touch sensor</p>
-								<p><i class="fa fa-fw <%= board.features.temperature ? 'fa-check' : 'fa-times' %>"></i> Temperature sensor</p>
-								<p><i class="fa fa-fw <%= board.features.powerJack ? 'fa-check' : 'fa-times' %>"></i> Power jack</p>
-								<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
+				</div>
+			</div>
+		</div>
+		<div class="block-specs">
+			<div class="container py-1">
+				<div class="m-3">
+					<div class="board-details">
+						<div class="board-specs">
+							<h2>Specifications</h2>
+							<div class="row">
+								<div class="col-md-3">
+									<h3>General properties</h3>
+									<p><span>Brand</span><strong><%= board.brand %></strong></p>
+									<p><span>Microcontroller</span><strong><%= board.microcontroller %></strong></p>
+									<p><span>Dimensions</span><strong><i class="fa fa-fw fa-arrows-alt-h"></i> <%= board.size.length %>mm <i class="fa fa-fw fa-arrows-alt-v"></i> <%= board.size.width %>mm</strong></p>
+									<h3>Power</h3>
+									<p><span>Operating voltage</span><strong><%= app.formatArray(board.voltage, 'v', '/') %></strong></p>
+									<p><span>Power supply</span><strong><%= app.formatArray(board.powerSupply, 'v', '&mdash;') %></strong></p>
+									<p><span>Current usage (normal)</span><strong><%= app.formatArray(board.currentUsage.normal, 'mA', '&mdash;') %></strong></p>
+									<p><span>Current usage (deep sleep)</span><strong><%= app.formatArray(board.currentUsage.deepSleep, 'mA', '&mdash;') %></strong></p>
+								</div>
+								<div class="col-md-3">
+									<h3>Input/Output</h3>
+									<p><span>Digital I/O pins</span><strong><%= board.pins.digital %></strong></p>
+									<p><span>Digital I/O pins with PWM</span><strong><%= board.pins.pwm %></strong></p>
+									<p><span>Analog input pins</span><strong><%= board.pins.analog %></strong></p>
+									<p><span>SPI <i class="fa fa-question-circle" title="Serial Peripheral Interface"></i></span><strong><%= board.pins.spi %></strong></p>
+									<p><span>I&sup2;C <i class="fa fa-question-circle" title="Inter-Integrated Circuit"></i></span><strong><%= board.pins.i2c %></strong></p>
+									<p><span>I&sup2;S <i class="fa fa-question-circle" title="Integrated Interchip Sound"></i></span><strong><%= board.pins.i2s %></strong></p>
+									<p><span>UART <i class="fa fa-question-circle" title="Universal Asynchronous Receiver-Transmitter"></i></span><strong><%= board.pins.uart %></strong></p>
+									<p><span>Max. current per pin</span><strong><%= board.pins.maxCurrent %>mA</strong></p>
+								</div>
+								<div class="col-md-3">
+									<h3>Memory</h3>
+									<p><span>Flash</span><strong><%= app.formatBytes(board.memory.flash) %></strong></p>
+									<p><span>SRAM</span><strong><%= app.formatBytes(board.memory.sram) %></strong></p>
+									<p><span>EEPROM</span><strong><%= app.formatBytes(board.memory.eeprom) %></strong></p>
+									<h3>Processing</h3>
+									<p><span>Cores</span><strong><%= board.cpu.cores %> <i class="fa fa-microchip"></i></strong></p>
+									<p><span>Clock</span><strong><%= app.formatArray(board.cpu.clock, 'MHz', '/', 0.001) %></strong></p>
+								</div>
+								<div class="col-md-3">
+									<h3>Extra features</h3>
+									<p><i class="fa fa-fw <%= board.features.wifi ? 'fa-check' : 'fa-times' %>"></i> WiFi</p>
+									<p><i class="fa fa-fw <%= board.features.bluetooth ? 'fa-check' : 'fa-times' %>"></i> Bluetooth</p>
+									<p><i class="fa fa-fw <%= board.features.can ? 'fa-check' : 'fa-times' %>"></i> CAN bus</p>
+									<p><i class="fa fa-fw <%= board.features.ethernet ? 'fa-check' : 'fa-times' %>"></i> Ethernet</p>
+									<p><i class="fa fa-fw <%= board.features.hall ? 'fa-check' : 'fa-times' %>"></i> Hall-effect sensor</p>
+									<p><i class="fa fa-fw <%= board.features.touch ? 'fa-check' : 'fa-times' %>"></i> Touch sensor</p>
+									<p><i class="fa fa-fw <%= board.features.temperature ? 'fa-check' : 'fa-times' %>"></i> Temperature sensor</p>
+									<p><i class="fa fa-fw <%= board.features.powerJack ? 'fa-check' : 'fa-times' %>"></i> Power jack</p>
+									<p><i class="fa fa-fw <%= board.features.usbConnector ? 'fa-check' : 'fa-times' %>"></i> USB connector</p>
+								</div>
 							</div>
 						</div>
 					</div>
