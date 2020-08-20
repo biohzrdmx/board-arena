@@ -66,7 +66,7 @@ App = Class.extend({
 			$('.js-view-boards').on('click', function(e) {
 				e.preventDefault();
 				$('html, body').animate({
-					scrollTop: $('.block-boards').offset().top - 80
+					scrollTop: $('.block-boards').offset().top - 60
 				}, 350);
 				$('[name=search]').select();
 			});
@@ -91,6 +91,16 @@ App = Class.extend({
 					obj.renderTemplate(obj.containers.client, 'pageBoard', { board: data });
 					//
 					$('html, body').scrollTop(0);
+					//
+					$('.js-back-boards').on('click', function(e) {
+						setTimeout(function() {
+							// $('html, body').animate({
+							// 	scrollTop: $('.block-boards').offset().top - 60
+							// }, 350);
+							$('html, body').scrollTop( $('.block-boards').offset().top - 60 );
+							$('[name=search]').select();
+						}, 100);
+					});
 					//
 					app.metaTags["og:title"].setContent(data.name);
 					app.metaTags["og:image"].setContent(app.metaTags["og:url"].getOriginal() + 'assets/boards/' + data.slug + '/board.svg');
