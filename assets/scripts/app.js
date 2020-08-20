@@ -94,10 +94,9 @@ App = Class.extend({
 					//
 					$('.js-back-boards').on('click', function(e) {
 						setTimeout(function() {
-							// $('html, body').animate({
-							// 	scrollTop: $('.block-boards').offset().top - 60
-							// }, 350);
-							$('html, body').scrollTop( $('.block-boards').offset().top - 60 );
+							$('html, body').animate({
+								scrollTop: $('.block-boards').offset().top - 60
+							}, 350);
 							$('[name=search]').select();
 						}, 100);
 					});
