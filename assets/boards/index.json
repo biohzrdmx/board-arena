@@ -19,6 +19,10 @@
 	"slug": "arduino-mega",
 	"microcontroller": "ATmega2560"
 },{
+	"name": "Arduino Due",
+	"slug": "arduino-due",
+	"microcontroller": "AT91SAM3X8E"
+},{
 	"name": "DigiSpark ATtiny85",
 	"slug": "digispark-attiny85",
 	"microcontroller": "ATtiny85"
