@@ -41,7 +41,7 @@
 		"hall": false,
 		"touch": false,
 		"temperature": true,
-		"powerJack": false,
+		"powerJack": true,
 		"usbConnector": true
 	}
 }
