@@ -13,7 +13,7 @@
 	"pins": {
 		"digital": 54,
 		"pwm": 12,
-		"analog": 2,
+		"analog": 12,
 		"spi": 1,
 		"i2c": 2,
 		"i2s": 1,
