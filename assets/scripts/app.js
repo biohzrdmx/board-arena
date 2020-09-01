@@ -30,9 +30,14 @@ App = Class.extend({
 		obj.templates.pageStart = obj.compileTemplate('#page-start');
 		obj.templates.pageBoard = obj.compileTemplate('#page-board');
 		obj.templates.pageCompare = obj.compileTemplate('#page-compare');
+		obj.templates.pageSitemap = obj.compileTemplate('#page-sitemap');
 		//
 		obj.addRoute('error', '/error', function(params) {
 			obj.renderTemplate(obj.containers.client, 'pageError', params);
+			return true;
+		});
+		obj.addRoute('sitemap', '/sitemap', function(params) {
+			obj.renderTemplate(obj.containers.client, 'pageSitemap', params);
 			return true;
 		});
 		obj.addRoute('start', '/start', function(params) {

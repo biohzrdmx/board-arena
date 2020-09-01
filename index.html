@@ -138,6 +138,27 @@
 	<script type="text/template" id="partial-placeholder">
 		<p class="animable"><i class="far fa-fw fa-hand-point-up"></i> Pick some boards to get started</p>
 	</script>
+	<script type="text/template" id="page-sitemap">
+		<div class="block block-sitemap">
+			<div class="container py-1">
+				<div class="m-3">
+					<h3>Sitemap</h3>
+					<ul>
+						<li><a href="#/start">Board index</a></li>
+						<li><a href="#/compare">Board comparator</a></li>
+						<li>
+							<span class="text-muted">Boards</span>
+							<ul>
+								<% _.each(app.boards, function(board) { %>
+									<li><a href="#/board/<%= board.slug %>"><%= board.name %></a></li>
+								<% }) %>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</script>
 	<script type="text/template" id="page-start">
 		<div class="block block-splash">
 			<div class="container">
