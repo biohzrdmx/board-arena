@@ -56,4 +56,24 @@
       <loc>https://biohzrdmx.github.io/board-arena/#/board/wemos-d1-mini</loc>
       <lastmod>2020-09-01</lastmod>
    </url>
+   <url>
+      <loc>https://biohzrdmx.github.io/board-arena/#/board/arduino-uno-wifi</loc>
+      <lastmod>2020-09-21</lastmod>
+   </url>
+   <url>
+      <loc>https://biohzrdmx.github.io/board-arena/#/board/arduino-nano-every</loc>
+      <lastmod>2020-09-21</lastmod>
+   </url>
+   <url>
+      <loc>https://biohzrdmx.github.io/board-arena/#/board/arduino-nano-33-iot</loc>
+      <lastmod>2020-09-21</lastmod>
+   </url>
+   <url>
+      <loc>https://biohzrdmx.github.io/board-arena/#/board/arduino-nano-33-ble</loc>
+      <lastmod>2020-09-21</lastmod>
+   </url>
+   <url>
+      <loc>https://biohzrdmx.github.io/board-arena/#/board/arduino-nano-33-ble-sense</loc>
+      <lastmod>2020-09-21</lastmod>
+   </url>
 </urlset>
