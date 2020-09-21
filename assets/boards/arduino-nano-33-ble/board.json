@@ -1,0 +1,47 @@
+{
+	"name":"Arduino Nano 33 BLE",
+	"microcontroller": "nRF52840",
+	"brand": "Arduino",
+	"tagline": "Arduino's tiniest form factor with Bluetooth Low Energy and embedded inertial sensor.",
+	"details": "The **Arduino Nano 33 BLE** is a completely new board on a well-known form factor. It comes with an embedded 9 axis inertial sensor what makes this board ideal for wearable devices, but also for a large range of scientific experiments in the need of short-distance wireless communication.\n\nThe Arduino Nano 33 BLE is an evolution of the traditional Arduino Nano, but featuring a lot more powerful processor, the nRF52840 from Nordic Semiconductors, a 32-bit ARM® Cortex™-M4 CPU running at 64 MHz. This will allow you to make larger programs than with the Arduino Uno (it has 1MB of program memory, 32 times bigger), and with a lot more variables (the RAM is 128 times bigger). The main processor includes other amazing features like Bluetooth® pairing via NFC and ultra low power consumption modes.\n\nThe Nano 33 BLE comes with a 9 axis inertial measurement unit (IMU) which means that it includes an accelerometer, a gyroscope, and a magnetometer with 3-axis resolution each. This makes the Nano 33 BLE the perfect choice for more advanced robotics experiments, exercise trackers, digital compasses, etc.",
+	"voltage": 3.3,
+	"powerSupply": [4.5, 21],
+	"currentUsage": {
+		"normal": [19, 180],
+		"deepSleep": 0.023
+	},
+	"pins": {
+		"digital": 14,
+		"pwm": 11,
+		"analog": 8,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 7
+	},
+	"memory": {
+		"flash": 1048576,
+		"sram": 262144,
+		"eeprom": false
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 64000
+	},
+	"size": {
+		"length": 45,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": true,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

@@ -1,4 +1,20 @@
 [{
+	"name": "Arduino Nano 33 BLE",
+	"slug": "arduino-nano-33-ble",
+	"microcontroller": "nRF52840"
+},{
+	"name": "Arduino Nano 33 BLE Sense",
+	"slug": "arduino-nano-33-ble-sense",
+	"microcontroller": "nRF52840"
+},{
+	"name": "Arduino Nano 33 IoT",
+	"slug": "arduino-nano-33-iot",
+	"microcontroller": "SAMD21 Cortex®-M0+"
+},{
+	"name": "Arduino Nano Every",
+	"slug": "arduino-nano-every",
+	"microcontroller": "ATmega4809"
+},{
 	"name": "Arduino Nano v3",
 	"slug": "arduino-nano",
 	"microcontroller": "ATmega328p"
@@ -6,6 +22,10 @@
 	"name": "Arduino UNO R3",
 	"slug": "arduino-uno",
 	"microcontroller": "ATmega328p"
+},{
+	"name": "Arduino UNO WiFi Rev.2",
+	"slug": "arduino-uno-wifi",
+	"microcontroller": "ATmega4809"
 },{
 	"name": "Arduino Leonardo",
 	"slug": "arduino-leonardo",

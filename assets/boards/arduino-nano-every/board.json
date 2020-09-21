@@ -1,0 +1,47 @@
+{
+	"name":"Arduino Nano Every",
+	"microcontroller": "ATmega4809",
+	"brand": "Arduino",
+	"tagline": "Add digital intelligence to small devices with Arduino's tiniest form factor.",
+	"details": "The **Arduino Nano Every** is an evolution of the traditional Arduino Nano board but features a lot more powerful processor, the ATMega4809. This will allow you to make larger programs than with the Arduino Uno (it has 50% more program memory), and with a lot more variables (the RAM is 200% bigger).",
+	"voltage": 5,
+	"powerSupply": [7, 21],
+	"currentUsage": {
+		"normal": [19, 180],
+		"deepSleep": 0.023
+	},
+	"pins": {
+		"digital": 14,
+		"pwm": 6,
+		"analog": 8,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 20
+	},
+	"memory": {
+		"flash": 49152,
+		"sram": 6144,
+		"eeprom": 256
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 20000
+	},
+	"size": {
+		"length": 45,
+		"width": 18
+	},
+	"features": {
+		"wifi": false,
+		"bluetooth": false,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": false,
+		"usbConnector": true
+	}
+}

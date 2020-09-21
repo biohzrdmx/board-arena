@@ -1,0 +1,47 @@
+{
+	"name":"Arduino UNO WiFi Rev.2",
+	"microcontroller": "ATmega4809",
+	"brand": "Arduino",
+	"tagline": "The Arduino for your educational projects with wireless connectivity and motion sensing.",
+	"details": "The **Arduino UNO WiFi Rev.2** is the easiest point of entry to basic IoT with the standard form factor of the UNO family. Whether you are looking at building a sensor network connected to your office or home router, or if you want to create a BLE device sending data to a cellphone, the Arduino UNO WiFi Rev.2 is your one-stop-solution for many of the basic IoT application scenarios.\n\nAdd this board to a device and you'll be able to connect it to a WiFi network, using its secure ECC608 crypto chip accelerator. The Arduino Uno WiFi is functionally the same as the Arduino Uno Rev3, but with the addition of WiFi / Bluetooth and some other enhancements. It incorporates the brand new ATmega4809 8-bit microcontroller from Microchip and has an onboard IMU (Inertial Measurement Unit) LSM6DS3TR.",
+	"voltage": 5,
+	"powerSupply": [7, 12],
+	"currentUsage": {
+		"normal": [45, 80],
+		"deepSleep": 35
+	},
+	"pins": {
+		"digital": 14,
+		"pwm": 5,
+		"analog": 6,
+		"spi": 1,
+		"i2c": 1,
+		"i2s": 1,
+		"uart": 1,
+		"maxCurrent": 20
+	},
+	"memory": {
+		"flash": 49152,
+		"sram": 6144,
+		"eeprom": 262144
+	},
+	"cpu": {
+		"cores": 1,
+		"clock": 16000
+	},
+	"size": {
+		"length": 69,
+		"width": 53
+	},
+	"features": {
+		"wifi": true,
+		"bluetooth": true,
+		"can": false,
+		"ethernet": false,
+		"hall": false,
+		"touch": false,
+		"temperature": false,
+		"powerJack": true,
+		"usbConnector": true
+	}
+}
